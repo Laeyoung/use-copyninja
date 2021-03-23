@@ -1,5 +1,6 @@
 import * as React from 'react';
 import useClippy from 'use-clippy';
+const _ = require('lodash');
 
 interface Clipboard {
   readText(): Promise<string>;
@@ -60,12 +61,13 @@ const useCopyninja = (): CopyninjaTuple => {
   
   React.useEffect((): void | VoidFunction => {
     console.log('React.useEffect??:', clipboard)
+    if (_.isEmpty(clipboard)) return;
     setCopyninja([...copyninja, clipboard])
   }, [ clipboard ]);
 
   const addCopyninja = React.useCallback(async (text: string): Promise<void> => {
     try {
-      console.log('clipboard:', clipboard)
+      console.log('text:', text)
       syncClipboard(text);
     }
     catch (e) {

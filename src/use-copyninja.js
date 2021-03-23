@@ -43,6 +43,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from) {
 exports.__esModule = true;
 var React = require("react");
 var use_clippy_1 = require("use-clippy");
+var _ = require('lodash');
 // const hasClipboardData = (w: Window): w is ClipboardDataWindow =>
 //   Object.prototype.hasOwnProperty.call(w, 'clipboardData');
 // 
@@ -59,6 +60,8 @@ var useCopyninja = function () {
     var _b = React.useState([]), copyninja = _b[0], setCopyninja = _b[1];
     React.useEffect(function () {
         console.log('React.useEffect??:', clipboard);
+        if (_.isEmpty(clipboard))
+            return;
         setCopyninja(__spreadArray(__spreadArray([], copyninja), [clipboard]));
     }, [clipboard]);
     var addCopyninja = React.useCallback(function (text) { return __awaiter(void 0, void 0, void 0, function () {
@@ -67,7 +70,7 @@ var useCopyninja = function () {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 1, , 6]);
-                    console.log('clipboard:', clipboard);
+                    console.log('text:', text);
                     syncClipboard(text);
                     return [3 /*break*/, 6];
                 case 1:

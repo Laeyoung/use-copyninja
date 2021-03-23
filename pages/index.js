@@ -29,6 +29,14 @@ export default function MyComponent() {
       >
         Add Clipboard to Copyninja
       </button>
+      <button
+        onClick={() => {
+          //alert(`Your copyninja contains: ${copyninja}`);
+          alert(`Copyninja contains: ${JSON.stringify(copyninja)}`);
+        }}
+      >
+        Get All from Copyninja
+      </button>
       <br/>
       <br/>
       <div>
